@@ -1,0 +1,10 @@
+.button {
+    scale: 0.5;
+}
+
+.entrance-line{
+    height: 500px;
+    border-left: 6px solid red;
+    margin-left: 10px;
+    margin-top: 120px;
+}

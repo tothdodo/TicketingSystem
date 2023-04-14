@@ -1,0 +1,32 @@
+a {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: darkslategray;
+}
+
+.games-column{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.container-teams{
+    height: 200px;
+}
+
+.logo{
+    scale: 0.6;
+    display: block;
+    margin: auto;
+}
+
+.vs-link{
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+}

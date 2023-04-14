@@ -1,0 +1,19 @@
+nav .navbar-nav li a { 
+    color: rgb(201, 204, 51);
+}
+
+nav .navbar-nav li a:hover { 
+    color: #c59e33; 
+}
+
+.nav-link active { 
+    color: white; 
+}
+
+.instagram-icon{
+    color: purple;
+}
+
+#navbar {
+    background-image: linear-gradient(to right, black , yellow);
+  }

@@ -1,0 +1,10 @@
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+html, body {
+    height: 100%;
+}
+  
+  #wrap {
+    min-height: 100%;
+  }
+  

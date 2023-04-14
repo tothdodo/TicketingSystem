@@ -1,0 +1,47 @@
+<div *ngIf="markedSeats.size != 0" class="">
+    <div class="container d-flex justify-content-center mb-3" *ngFor="let markedSeat of markedSeats | keyvalue">
+        <div class="row row-cols-lg-auto border border-2 border-dark bg-light">
+            <div class="col text-center my-auto fw-bolder">Ticket</div>
+            <div class="col text-center my-auto">
+                Sector: {{markedSeat.key.sectorName}}<br>
+                Row: {{markedSeat.key.rowNumber}}<br>
+                Number: {{markedSeat.key.seatNumber}}
+            </div>
+            <div class="col text-end my-auto pe-0">Choose type:</div>
+            <div class="col text-start my-auto ms-0">
+                <select [ngModel]="markedSeats.get(markedSeat.key)" (ngModelChange)="onChange($event, markedSeat.key)"  class="form-control">
+                    <option *ngFor="let type of ticketTypes" [value]="type">
+                        {{type}}
+                    </option>
+                </select> 
+            </div>
+            <div class="col text-center my-auto fw-bold">Price: {{calculateTicketPrice(markedSeat.value)}} Ft</div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button id="buyButton" type="button" class="btn btn-primary btn-lg m-2" (click)="buyClick()" routerLink="/home">Buy ({{totalPrice}} Ft)</button>
+    </div>
+    <!-- <ul *ngFor="let markedSeat of markedSeats" class ="list-group">
+        <li class ="list-group-item">
+            <div>
+                <h4 class="list-group-item-heading text-center">Ticket</h4>
+                <h4 class="list-group-item-heading">Price: {{calculatePrice(markedSeat)}} Ft</h4>
+                <p class="list-group-item-text">
+                    Sector: {{markedSeat.sector}}<br>
+                    Row: {{markedSeat.row}}<br>
+                    Seat number: {{markedSeat.seatNumber}}<br>
+                    Choose type:<br>
+                </p>
+                <select [(ngModel)]="selectedTypes[markedSeats.indexOf(markedSeat)]" (change)="calculatePrice(markedSeat)" class="form-control">
+                    <option *ngFor="let type of ticketTypes" [value]="type">
+                        {{type}}
+                    </option>
+                </select>        
+            </div>
+        </li>        
+    </ul> (change)="setMarkedSeatType(markedSeat.value)"
+    <div class="text-center">
+        <button id="buyButton" type="button" class="btn btn-primary btn-lg m-2" (click)="buyClick()" routerLink="/home">Buy</button>
+    </div>-->
+</div>
+
