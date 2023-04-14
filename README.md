@@ -30,26 +30,26 @@ Still under construction, but has a lot of valuable functions.
 
 ## 1) **News** feed / **Home** page with navigation bar including social media links of the club
 
-![](ts_news.png)
+![](screenshots/ts_news.png)
 
 ## 2) Clicking on **Tickets** we can scroll through the upcoming games, where we can see the details of the game and navigate to the chosen game with the **Tickets** button.
 
-![](ts_upcoming_games.png)
+![](screenshots/ts_upcoming_games.png)
 
 ## 3) Court view with its all seats. Seats status (and color) can be bought, available, or marked.
 
-![](ts_court.png)
+![](screenshots/ts_court.png)
 
 ## 4) Each marked seat we have a ticket row under the court, where we can see the prices, the ticket informations such as sector, row, seatnumber and type. We also have a **Buy** button, where we can continue our purchase. Function still under construction.
 
-![](ts_tickets.png)
+![](screenshots/ts_tickets.png)
 
 ## 5) We can browse our favorite player in the **Team** section.
 
-![](ts_team.png)
+![](screenshots/ts_team.png)
 
 ## 6)  Important that the website is responsive so the looking is perfect in each dimension.
 
-![](ts_responsive_1.png)
+![](screenshots/ts_responsive_1.png)
 
-![](ts_responsive_2.png)
+![](screenshots/ts_responsive_2.png)
