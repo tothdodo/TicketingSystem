@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="m-3 fs-1">Add new player!</h1>
+
+      <form [formGroup]="addPlayerForm" [hidden]="success" (ngSubmit)="submitHandler()" method="post" action=""
+        autocomplete="chrome-off" class="ms-3">
+
+        <div class="row">
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">First Name</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="firstName" placeholder="Enter First Name"
+                onkeydown="return /[a-z\s]/i.test(event.key)" autocomplete="chrome-off" />
+
+              <mat-error *ngIf="firstName!.invalid && firstName!.touched">
+                First Name is required!
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Last Name</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="lastName" placeholder="Enter Last Name"
+                onkeydown="return /[a-z\s]/i.test(event.key)" type="text" autocomplete="chrome-off">
+
+              <mat-error *ngIf="lastName!.invalid && lastName!.touched">
+                Last Name is required!
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Born date:</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="bornDate" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Nationality</h4>
+
+            <mat-select-country matInput autocomplete="chrome-off" formControlName="country" appearance="outline"
+              label="Country" loadingDB="true">
+            </mat-select-country>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Height</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="height" placeholder="Enter Height" type="number"
+                autocomplete="chrome-off">
+              <mat-error *ngIf="height!.invalid && height!.touched">
+                Must be between 150 and 250!
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Weight</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="weight" placeholder="Enter Weight" type="number"
+                autocomplete="chrome-off">
+              <mat-error *ngIf="weight!.invalid && weight!.touched">
+                Must be between 50 and 250!
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Jersey Number</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="jerseyNumber" placeholder="Enter Jersey Number" type="number"
+                autocomplete="chrome-off">
+              <mat-error *ngIf="jerseyNumber!.invalid && jerseyNumber!.touched">
+                Must be between 0 and 99!
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-5">
+            <h4 class="mb-0">Position</h4>
+
+            <mat-form-field class="w-100">
+              <input matInput formControlName="position" placeholder="Enter Position" type="text"
+                autocomplete="chrome-off">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <h4 class="mb-0">Picture</h4>
+
+            <div class="image-select">
+              <input type="file" (change)="showPreview($event)" />
+
+              <div class="imagePreview" *ngIf="pictureSrc && pictureSrc !== ''">
+                <img [src]="pictureSrc" style="height: 150px; width: 100px" [alt]="addPlayerForm.value.name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col  d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary ms-5 mb-5 text-left" [disabled]="addPlayerForm.invalid">
+              Add Player
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="add-success" *ngIf="success">
+    Yay! Player added successfully!
+  </div>
+</div>

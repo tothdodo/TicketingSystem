@@ -23,26 +23,26 @@ export class SectorService extends BaseService {
   }
 
   /**
-   * Path part for operation apiSectorGameidGet
+   * Path part for operation apiSectorGameIdGet
    */
-  static readonly ApiSectorGameidGetPath = '/api/Sector/{gameid}';
+  static readonly ApiSectorGameIdGetPath = '/api/Sector/{gameId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiSectorGameidGet$Plain()` instead.
+   * To access only the response body, use `apiSectorGameIdGet$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiSectorGameidGet$Plain$Response(params: {
-    gameid: number;
+  apiSectorGameIdGet$Plain$Response(params: {
+    gameId: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<SectorHeader>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, SectorService.ApiSectorGameidGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, SectorService.ApiSectorGameIdGetPath, 'get');
     if (params) {
-      rb.path('gameid', params.gameid, {});
+      rb.path('gameId', params.gameId, {});
     }
 
     return this.http.request(rb.build({
@@ -59,38 +59,38 @@ export class SectorService extends BaseService {
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiSectorGameidGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiSectorGameIdGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiSectorGameidGet$Plain(params: {
-    gameid: number;
+  apiSectorGameIdGet$Plain(params: {
+    gameId: number;
   },
   context?: HttpContext
 
 ): Observable<Array<SectorHeader>> {
 
-    return this.apiSectorGameidGet$Plain$Response(params,context).pipe(
+    return this.apiSectorGameIdGet$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<SectorHeader>>) => r.body as Array<SectorHeader>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiSectorGameidGet$Json()` instead.
+   * To access only the response body, use `apiSectorGameIdGet$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiSectorGameidGet$Json$Response(params: {
-    gameid: number;
+  apiSectorGameIdGet$Json$Response(params: {
+    gameId: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<SectorHeader>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, SectorService.ApiSectorGameidGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, SectorService.ApiSectorGameIdGetPath, 'get');
     if (params) {
-      rb.path('gameid', params.gameid, {});
+      rb.path('gameId', params.gameId, {});
     }
 
     return this.http.request(rb.build({
@@ -107,18 +107,18 @@ export class SectorService extends BaseService {
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiSectorGameidGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiSectorGameIdGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiSectorGameidGet$Json(params: {
-    gameid: number;
+  apiSectorGameIdGet$Json(params: {
+    gameId: number;
   },
   context?: HttpContext
 
 ): Observable<Array<SectorHeader>> {
 
-    return this.apiSectorGameidGet$Json$Response(params,context).pipe(
+    return this.apiSectorGameIdGet$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<SectorHeader>>) => r.body as Array<SectorHeader>)
     );
   }

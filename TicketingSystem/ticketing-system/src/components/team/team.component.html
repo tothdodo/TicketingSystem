@@ -1,146 +1,19 @@
 <div class="container mt-3">
     <div class="row row-cols-xxl-4 row-cols-lg-3 row-cols-md-2 row-cols-1">
-        <div class="col">
+        <div *ngFor="let player of players | sortBy: 'jerseyNumber'"  class="col">
             <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/adam_horvath.png" class="card-img-top" alt="...">
+                <img [src]="getImageSource(player)" style="height: 25rem;" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Adam Horvath (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/daniel_hansen.jpg  " class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Daniel Hansen (DNK)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/zach_brown.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-cente fw-bolder">Zach Brown (USA)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/matthew_tiby.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Matthew Tiby (USA)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/akos_keller.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Akos Keller (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/stefan_pot.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Stefan Pot (SRB)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/zoltan_perl.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Zoltan Perl (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/raymond_cowels.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Raymond Cowels (USA)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/zsolt_takacs.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Zsolt Takacs (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/abel_sovegjarto.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Abel Sovegjarto (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/benedek_kovacs.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Benedek Mate Kovacs (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/marko_krivacevic.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Marko Krivacevic (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/boris_barac.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Boris Barac (CRO)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/peter_veraszto.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Peter Veraszto (HUN)</h5>
-                  <p class="card-text fw-bold">Mezszám: 1 <br> Életkor: 18 <br> Poszt: 1-2 <br> Magasság: 193 cm <br> Súly: 90 kg</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/milos_konakov.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Milos Konakov (SRB)</h5>
-                  <p class="card-text fw-bold">Head coach</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-warning m-2" style="width: 18rem;">
-                <img src="assets/marko_curovic.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center fw-bolder">Marko Curovic (SRB)</h5>
-                  <p class="card-text fw-bold">Assistant Coach</p>
+                  <h5 class="card-title text-center fw-bolder">{{player.firstName}} {{player.lastName}} ({{getUppercaseSubstring(player.nationality!)}})</h5>
+                  <p class="card-text fw-bold">
+                    Jersey number: {{player.jerseyNumber}}<br>
+                    Age: {{calculateAge(player.birthDate!)}} <br>
+                    Position: {{player.position}}<br>
+                    Heigth: {{player.heigth}} cm <br>
+                    Weigth: {{player.weigth}} kg</p>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-danger" (click)="deletePlayer(player)">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

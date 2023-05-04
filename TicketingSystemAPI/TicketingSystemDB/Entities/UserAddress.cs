@@ -1,4 +1,6 @@
-﻿namespace TicketingSystemDB.Entities
+﻿using TicketingSystemDB.Entities.Games;
+
+namespace TicketingSystemDB.Entities
 {
     public class UserAddress
     {

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { GameService } from './services/game.service';
+import { PlayerService } from './services/player.service';
 import { SeatService } from './services/seat.service';
 import { SectorService } from './services/sector.service';
 
@@ -17,6 +18,7 @@ import { SectorService } from './services/sector.service';
   declarations: [],
   providers: [
     GameService,
+    PlayerService,
     SeatService,
     SectorService,
     ApiConfiguration

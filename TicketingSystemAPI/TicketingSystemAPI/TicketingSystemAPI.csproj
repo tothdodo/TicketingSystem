@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TicketingSystemDB\TicketingSystemDB.csproj" />
+    <ProjectReference Include="..\TicketingSystemBLL\TicketingSystemBLL.csproj" />
   </ItemGroup>
 
 </Project>

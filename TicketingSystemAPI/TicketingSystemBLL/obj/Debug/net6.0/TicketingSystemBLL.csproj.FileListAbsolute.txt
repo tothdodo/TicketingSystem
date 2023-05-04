@@ -1,0 +1,15 @@
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\bin\Debug\net6.0\TicketingSystemBLL.deps.json
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\bin\Debug\net6.0\TicketingSystemBLL.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\bin\Debug\net6.0\TicketingSystemBLL.pdb
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\bin\Debug\net6.0\TicketingSystemDB.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\bin\Debug\net6.0\TicketingSystemDB.pdb
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.csproj.AssemblyReference.cache
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.AssemblyInfoInputs.cache
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.AssemblyInfo.cs
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.csproj.CoreCompileInputs.cache
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.csproj.CopyComplete
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\refint\TicketingSystemBLL.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\TicketingSystemBLL.pdb
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemBLL\obj\Debug\net6.0\ref\TicketingSystemBLL.dll

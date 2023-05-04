@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TicketingSystemDB.Entities;
+using TicketingSystemDB.Entities.Games;
+using TicketingSystemDB.Entities.Players;
 using TicketingSystemDB.EntityConfigurations;
 
 namespace TicketingSystemDB
@@ -18,6 +20,8 @@ namespace TicketingSystemDB
         public DbSet<UserAddress> UserAddresses => Set<UserAddress>();
         public DbSet<Address> Addresses => Set<Address>();
 
+        public DbSet<Player> Players => Set<Player>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -30,6 +34,8 @@ namespace TicketingSystemDB
             modelBuilder.ApplyConfiguration(new UserAddressEntityConfiguration());
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
             modelBuilder.ApplyConfiguration(new GameSeatEntityConfiguration());
+
+            modelBuilder.ApplyConfiguration(new PlayerEntityConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

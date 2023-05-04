@@ -1,8 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using TicketingSystemAPI.HubConfig;
+using TicketingSystemBLL.HubConfig;
+using TicketingSystemBLL.Services;
 using TicketingSystemDB;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<PlayerService, PlayerService>();
+builder.Services.AddScoped<GameService, GameService>();
+builder.Services.AddScoped<SectorService, SectorService>();
+builder.Services.AddScoped<SeatService, SeatService >();
 
 // Add services to the container.
 builder.Services.AddSignalR();
@@ -19,7 +25,6 @@ builder.Services.AddCors(options => options.AddPolicy(name: "TicketingSystemOrig
     {
         policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
     }));
-
 
 
 var app = builder.Build();

@@ -176,3 +176,10 @@ C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAP
 C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\obj\Debug\net6.0\TicketingSystemAPI.pdb
 C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\obj\Debug\net6.0\TicketingSystemAPI.genruntimeconfig.cache
 C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\obj\Debug\net6.0\ref\TicketingSystemAPI.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\TicketingSystemBLL.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\TicketingSystemBLL.pdb
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\Microsoft.Extensions.Features.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Dodó\source\repos\TicketingSystem\TicketingSystemAPI\TicketingSystemAPI\bin\Debug\net6.0\System.IO.Pipelines.dll

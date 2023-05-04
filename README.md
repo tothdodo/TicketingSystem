@@ -53,3 +53,9 @@ Still under construction, but has a lot of valuable functions.
 ![](screenshots/ts_responsive_1.png)
 
 ![](screenshots/ts_responsive_2.png)
+
+## 7) Players can now be added or deleted so they can be managed dynamically
+
+![](screenshots/add_player_view.png)
+
+![](screenshots/new_team_view.png)

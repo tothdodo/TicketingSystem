@@ -73,7 +73,7 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Game", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Game", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,8 +108,8 @@ namespace TicketingSystemDB.Migrations
                         new
                         {
                             Id = 1,
-                            BuyEnds = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Local),
-                            BuyStarts = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            BuyEnds = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
+                            BuyStarts = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
                             Opponent = "DEAC",
                             Place = "Arena Savaria",
                             StartTime = new DateTime(2023, 5, 6, 18, 0, 0, 0, DateTimeKind.Unspecified)
@@ -117,8 +117,8 @@ namespace TicketingSystemDB.Migrations
                         new
                         {
                             Id = 2,
-                            BuyEnds = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Local),
-                            BuyStarts = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            BuyEnds = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
+                            BuyStarts = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
                             Opponent = "Alba Fehérvár",
                             Place = "Arena Savaria",
                             StartTime = new DateTime(2023, 5, 13, 18, 0, 0, 0, DateTimeKind.Unspecified)
@@ -126,15 +126,15 @@ namespace TicketingSystemDB.Migrations
                         new
                         {
                             Id = 3,
-                            BuyEnds = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Local),
-                            BuyStarts = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            BuyEnds = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
+                            BuyStarts = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
                             Opponent = "Szolnoki Olajbányász",
                             Place = "Arena Savaria",
                             StartTime = new DateTime(2023, 5, 20, 18, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.GameSeat", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.GameSeat", b =>
                 {
                     b.Property<int>("SeatId")
                         .HasColumnType("int");
@@ -10529,7 +10529,7 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Row", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Row", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -10744,7 +10744,7 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Seat", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Seat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -14223,7 +14223,7 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Sector", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Sector", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -14263,7 +14263,7 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.User", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -14306,6 +14306,59 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TicketingSystemDB.Entities.Players.Player", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasMaxLength(50)
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Heigth")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<int>("JerseyNumber")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Nationality")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Weigth")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Players");
+                });
+
             modelBuilder.Entity("TicketingSystemDB.Entities.UserAddress", b =>
                 {
                     b.Property<int>("UserId")
@@ -14345,21 +14398,21 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.GameSeat", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.GameSeat", b =>
                 {
-                    b.HasOne("TicketingSystemDB.Entities.Game", "Game")
+                    b.HasOne("TicketingSystemDB.Entities.Games.Game", "Game")
                         .WithMany("GameSeats")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketingSystemDB.Entities.Seat", "Seat")
+                    b.HasOne("TicketingSystemDB.Entities.Games.Seat", "Seat")
                         .WithMany("GameSeats")
                         .HasForeignKey("SeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketingSystemDB.Entities.User", "User")
+                    b.HasOne("TicketingSystemDB.Entities.Games.User", "User")
                         .WithMany("GameSeats")
                         .HasForeignKey("UserId");
 
@@ -14370,9 +14423,9 @@ namespace TicketingSystemDB.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Row", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Row", b =>
                 {
-                    b.HasOne("TicketingSystemDB.Entities.Sector", "Sector")
+                    b.HasOne("TicketingSystemDB.Entities.Games.Sector", "Sector")
                         .WithMany("Rows")
                         .HasForeignKey("SectorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -14381,9 +14434,9 @@ namespace TicketingSystemDB.Migrations
                     b.Navigation("Sector");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Seat", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Seat", b =>
                 {
-                    b.HasOne("TicketingSystemDB.Entities.Row", "Row")
+                    b.HasOne("TicketingSystemDB.Entities.Games.Row", "Row")
                         .WithMany("Seats")
                         .HasForeignKey("RowId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -14400,7 +14453,7 @@ namespace TicketingSystemDB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketingSystemDB.Entities.User", "User")
+                    b.HasOne("TicketingSystemDB.Entities.Games.User", "User")
                         .WithMany("UserAddresses")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -14416,27 +14469,27 @@ namespace TicketingSystemDB.Migrations
                     b.Navigation("UserAddresses");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Game", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Game", b =>
                 {
                     b.Navigation("GameSeats");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Row", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Row", b =>
                 {
                     b.Navigation("Seats");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Seat", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Seat", b =>
                 {
                     b.Navigation("GameSeats");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Sector", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Sector", b =>
                 {
                     b.Navigation("Rows");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.User", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.User", b =>
                 {
                     b.Navigation("GameSeats");
 

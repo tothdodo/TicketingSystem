@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystemDB", "Ticket
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystemAPI", "TicketingSystemAPI\TicketingSystemAPI.csproj", "{A5FDFE08-6759-48AF-80DB-B31605179EAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystemBLL", "TicketingSystemBLL\TicketingSystemBLL.csproj", "{AF497E1C-F1B7-4255-AF68-C625634A0209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A5FDFE08-6759-48AF-80DB-B31605179EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5FDFE08-6759-48AF-80DB-B31605179EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5FDFE08-6759-48AF-80DB-B31605179EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF497E1C-F1B7-4255-AF68-C625634A0209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF497E1C-F1B7-4255-AF68-C625634A0209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF497E1C-F1B7-4255-AF68-C625634A0209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF497E1C-F1B7-4255-AF68-C625634A0209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TicketingSystemDB.Entities;
+using TicketingSystemDB.Entities.Games;
 
 namespace TicketingSystemDB.EntityConfigurations
 {

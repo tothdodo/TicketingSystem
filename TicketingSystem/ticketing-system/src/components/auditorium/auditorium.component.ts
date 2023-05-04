@@ -33,8 +33,8 @@ export class AuditoriumComponent {
     this.signalRService.addBroadcastSeatStatusListener();
 
     this.gameId = Number(this.route.snapshot.paramMap.get('gameId'));
-    this.sectorService.apiSectorGameidGet$Json$Response({
-      gameid: this.gameId
+    this.sectorService.apiSectorGameIdGet$Json$Response({
+      gameId: this.gameId
     }).subscribe(
       (response: StrictHttpResponse<Array<SectorHeader>>) => {
       this.signalRService.sectors = response.body;
@@ -74,11 +74,20 @@ export class AuditoriumComponent {
   }
 
   seatClicked(seat: SeatHeader): void{
-     const seatButton = document.getElementById(seat.id!.toString());
      if(this.markedSeats.has(seat)){
        this.markedSeats.delete(seat);
        seat.status = "Available";
        this.signalRService.broadcastSeatStatus(seat);
+       this.seatService.apiSeatGameIdPut$Json$Response({
+        gameId: this.gameId,
+        body: seat
+      }).subscribe(
+        (response: StrictHttpResponse<SeatHeader>) => {
+          console.log("GameSeat available again!" + response);
+        },
+      (err) => {
+        console.error(err);
+      });
      }
      else {
        const maximumTicket = 5;
@@ -91,6 +100,16 @@ export class AuditoriumComponent {
          let tempSeat = {...seat};
          tempSeat.status = "Bought";
          this.signalRService.broadcastSeatStatus(tempSeat);
+         this.seatService.apiSeatGameIdPut$Json$Response({
+          gameId: this.gameId,
+          body: tempSeat
+        }).subscribe(
+          (response: StrictHttpResponse<SeatHeader>) => {
+            console.log("GameSeat not available anymore!" + response);
+          },
+        (err) => {
+          console.error(err);
+        });
          };      
       }
       this.dataService.sendEvent();
