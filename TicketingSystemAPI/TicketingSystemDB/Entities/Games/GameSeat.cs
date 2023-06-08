@@ -12,6 +12,5 @@
 
         public virtual Game Game { get; set; } = null!;
         public virtual Seat Seat { get; set; } = null!;
-        public virtual User? User { get; set; }
     }
 }

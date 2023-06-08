@@ -1,10 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface GameHeader {
-  buyEnds?: string;
-  buyStarts?: string;
+  awayTeam?: null | string;
+  awayTeamLogoUrl?: null | string;
+  homeTeam?: null | string;
+  homeTeamLogoUrl?: null | string;
   id?: number;
-  opponent?: null | string;
   place?: null | string;
-  startTime?: string;
+  startTime?: Date;
 }

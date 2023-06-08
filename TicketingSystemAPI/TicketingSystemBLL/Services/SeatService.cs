@@ -2,7 +2,6 @@
 using TicketingSystemBLL.HubConfig;
 using TicketingSystemBLL.Dtos;
 using TicketingSystemDB.Entities.Games;
-using TicketingSystemBLL.TimerFeatures;
 using Microsoft.AspNetCore.SignalR;
 
 namespace TicketingSystemBLL.Services
@@ -16,6 +15,19 @@ namespace TicketingSystemBLL.Services
         {
             _dbContext = dbContext;
             _hub = hub;
+        }
+
+        public async Task<SeatHeader?> GetSeatOrNull(int seatId)
+        {
+            var dbSeat = await _dbContext.Seats.SingleOrDefaultAsync(s => s.Id == seatId);
+            if (dbSeat == null)
+            {
+                return null;
+            }
+            return new SeatHeader
+            {
+                Id = dbSeat.Id
+            };
         }
 
         public async Task<List<SeatHeader>> GetSeats()
@@ -38,9 +50,7 @@ namespace TicketingSystemBLL.Services
         {
             if (seat.Status == "Bought")
             {
-                var timerManager = new TimerManager(
-                        () => _hub.Clients.All.SendAsync("transferseatstatus", seat)
-                    );
+                await _hub.Clients.All.SendAsync("transferseatstatus", seat);
             }
 
             dbGameSeat.Status = seat.Status;

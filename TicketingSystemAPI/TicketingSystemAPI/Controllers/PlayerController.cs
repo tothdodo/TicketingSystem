@@ -46,9 +46,9 @@ namespace TicketingSystemAPI.Controllers
                 return Conflict();
             } else
             {
-                Uri uri = new Uri($"https://localhost:7090/api/Player/{postedPlayer.Id}");
-                return Created(
-                    uri,
+                return CreatedAtAction(
+                    nameof(GetPlayerById),
+                    new { playerId = postedPlayer.Id },
                     postedPlayer
                     );
             }
@@ -69,6 +69,5 @@ namespace TicketingSystemAPI.Controllers
                 return NoContent();
             }
         }
-
     }
 }

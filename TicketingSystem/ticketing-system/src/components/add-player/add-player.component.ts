@@ -10,25 +10,51 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-player.component.css']
 })
 export class AddPlayerComponent {
+  /**
+   * Numbers for the jersey number dropdown
+   */
   numbers: number[] = Array.from({length: 100}, (_, i) => i);
 
+  /**
+   * Form group for the add player form
+   */
   addPlayerForm!: FormGroup;
 
+  /**
+   * Minimum and maximum dates for the date picker
+   */
   minDate: Date;
   maxDate: Date;
 
+  /**
+   * Loading and success flags
+   */
   loading = false;
   success = false;
 
+  /**
+   * File for the player picture
+   */
   selectedPictureFile!: File;
   pictureSrc?: string;
 
-  constructor(private playerService: PlayerService, private fb: FormBuilder){
+  /**
+   * Sets the min and max dates for the date picker
+   * @param playerService DI for the player service
+   * @param fb Form builder DI
+   */
+  constructor(
+    private playerService: PlayerService,
+    private fb: FormBuilder)
+    {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 60, 0, 1);
     this.maxDate = new Date(currentYear - 14, 11, 31);
   }
 
+  /**
+   * Builds the form group and subscribes to its value changes
+   */
   ngOnInit() {
     this.addPlayerForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -44,7 +70,10 @@ export class AddPlayerComponent {
     this.addPlayerForm.valueChanges.subscribe(console.log);
   }
 
-  async submitHandler() {
+  /**
+   * Submits the form and calls the player service to add the player to the database
+   */
+  submitHandler() {
     this.loading = true;
 
     let newPlayer: PlayerHeader = {
@@ -75,6 +104,12 @@ export class AddPlayerComponent {
      this.loading = false;
   }
 
+  /**
+   * Validates the file type
+   * @param types Valid file types
+   * @param fileName Chosen file name
+   * @returns If invalid file type returns false, otherwise true
+   */
   requiredFileType( types: string[], fileName: string) : boolean{{
       if ( fileName ) {
         const extension = fileName.split('.')[1].toLowerCase();
@@ -94,6 +129,11 @@ export class AddPlayerComponent {
     };
   }
 
+  /**
+   * Shows the preview of the selected picture
+   * @param event Event for the file input
+   * @returns If invalid file type returns
+   */
   showPreview(event: any) {
     console.log(event.target.files[0].name);
     this.selectedPictureFile = <File>event.target.files[0];
@@ -105,7 +145,6 @@ export class AddPlayerComponent {
     const file = (event.target as HTMLInputElement)?.files?.[0];
     if (!file) return;
     
-    // File Preview
     const reader = new FileReader();
     reader.onload = () => {
       this.pictureSrc = reader.result as string;
@@ -113,6 +152,9 @@ export class AddPlayerComponent {
     reader.readAsDataURL(file)
   }
 
+  /**
+   * Getters for the form controls
+   */
   get firstName() { return this.addPlayerForm.get('firstName'); }
 
   get lastName() { return this.addPlayerForm.get('lastName'); }

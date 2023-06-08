@@ -54,7 +54,6 @@ namespace TicketingSystemBLL.Services
                     Source = dbPlayer.Source
                 };
             }
-
         }
 
         public async Task<PlayerHeader?> PostPlayer(PlayerHeader player)
@@ -80,8 +79,6 @@ namespace TicketingSystemBLL.Services
             _dbContext.Players.Add(dbPlayer);
             await _dbContext.SaveChangesAsync();
 
-            // Must change to CreatedAtAction with nameof(GetPlayerById) but never worked..
-            Uri uri = new Uri($"https://localhost:7090/api/Player/{dbPlayer.Id}");
 
             return new PlayerHeader
             {

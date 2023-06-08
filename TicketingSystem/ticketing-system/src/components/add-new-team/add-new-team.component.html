@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Add New Team</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="team.name" name="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Home Court" [(ngModel)]="team.homeCourt" name="homeCourt" required>
+  </mat-form-field>
+  <div class="image-select">
+    <div>Logo: </div>
+
+    <input type="file" (change)="showPreview($event)" [(ngModel)]="team.logoUrl" />
+
+    <div class="imagePreview" *ngIf="pictureSrc && pictureSrc !== ''">
+      <img [src]="pictureSrc" style="height: 100px; width: 100px" alt="team-logo">
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" [disabled]="!team.name || !team.homeCourt || !team.logoUrl" (click)="onAddClick()">Add</button>
+</div>

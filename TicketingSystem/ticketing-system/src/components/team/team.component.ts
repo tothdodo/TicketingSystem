@@ -9,10 +9,20 @@ import { StrictHttpResponse } from 'src/app/api/strict-http-response';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent {
+  /**
+   * Collection of all the players
+   */
   players: Array<PlayerHeader> = new Array<PlayerHeader>;
 
+  /**
+   * 
+   * @param playerService DI for the player service
+   */
   constructor(private playerService: PlayerService){}
 
+  /**
+   * Gets all the players and sorts them by jersey number ascending
+   */
   ngOnInit(){
     this.playerService.apiPlayerTeamGet$Json$Response({
     }).subscribe(
@@ -25,6 +35,11 @@ export class TeamComponent {
     });
   }
 
+  /**
+   * Calculates the age from the birth date
+   * @param birthDate Birth date to calculate the age from
+   * @returns Age
+   */
   calculateAge(birthDate: Date): number {
     const currentDate = new Date();
 
@@ -40,6 +55,12 @@ export class TeamComponent {
     }
   }
 
+  /**
+   * Gets the first three letters from the string and capitalizes them
+   * Used for the Nationality
+   * @param str String to get the substring from
+   * @returns First 3 letters of the string capitalized
+   */
   getUppercaseSubstring(str: string): string {
     const substring = str.substr(0, 3);
     
@@ -48,6 +69,10 @@ export class TeamComponent {
     return capitalizedSubstring;
   }
 
+  /**
+   * @param player Player to get the image source for
+   * @returns source
+   */
   getImageSource(player: PlayerHeader): string {
     const source = player.source;
 
@@ -55,7 +80,6 @@ export class TeamComponent {
       return 'assets/images/players/default.png';
     }
 
-    //check whether the source has jpg or png extension
     const extension = source.substr(source.length - 3, source.length);
     if(!(extension === 'jpg' || extension === 'png')){
       return 'assets/images/players/default.png';
@@ -64,6 +88,10 @@ export class TeamComponent {
     return "assets/images/players/" + source;
   }
 
+  /**
+   * Calls service's the deletePlayer method with the player to be deleted
+   * @param player Player to be deleted
+   */
   deletePlayer(player: PlayerHeader){
     this.playerService.apiPlayerPlayerIdDelete$Response({
       playerId: player.id!

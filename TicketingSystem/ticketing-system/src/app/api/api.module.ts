@@ -5,9 +5,10 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { GameService } from './services/game.service';
+import { NewsService } from './services/news.service';
 import { PlayerService } from './services/player.service';
 import { SeatService } from './services/seat.service';
-import { SectorService } from './services/sector.service';
+import { TeamService } from './services/team.service';
 
 /**
  * Module that provides all services and configuration.
@@ -18,9 +19,10 @@ import { SectorService } from './services/sector.service';
   declarations: [],
   providers: [
     GameService,
+    NewsService,
     PlayerService,
     SeatService,
-    SectorService,
+    TeamService,
     ApiConfiguration
   ],
 })

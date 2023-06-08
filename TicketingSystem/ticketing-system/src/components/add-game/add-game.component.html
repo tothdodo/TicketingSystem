@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="m-4 fs-1">Publish a new match!</h1>
+
+            <form [formGroup]="addGameForm" [hidden]="success" (ngSubmit)="submitHandler()" method="post" action=""
+                autocomplete="chrome-off" class="ms-3">
+
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <h4 class="mb-0">Home Team</h4>
+
+                        <mat-form-field class="w-100">
+                            <mat-select matInput formControlName="homeTeam" placeholder="Enter Home Team">
+                                <mat-option *ngFor="let team of leagueTeams" [value]="team">{{ team.name }}</mat-option>
+                            </mat-select>
+
+                            <mat-error *ngIf="homeTeam!.invalid && homeTeam!.touched">
+                                Home team is a required field!
+                            </mat-error>
+
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <h4 class="mb-0">Away Team</h4>
+
+                        <mat-form-field class="w-100">
+                            <mat-select matInput formControlName="awayTeam" placeholder="Enter Away Team">
+                                <mat-option *ngFor="let team of leagueTeams" [value]="team">{{ team.name }}</mat-option>
+                            </mat-select>
+
+                            <mat-error *ngIf="awayTeam!.invalid && awayTeam!.touched">
+                                Away team is a required field!
+                            </mat-error>
+
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <h4 class="mb-0">Date:</h4>
+
+                        <mat-form-field class="w-100">
+                            <input matInput formControlName="date" [min]="minDate" [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <h4 class="mb-0">Start Time:</h4>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col me-2">Hour</div>
+                                    <mat-form-field>
+                                        <select matNativeControl formControlName="hour">
+                                            <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col me-2">Minute</div>
+                                    <mat-form-field>
+                                        <select matNativeControl formControlName="min">
+                                            <option *ngFor="let min of minutes" [value]="min">{{ min }}</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary ms-5 mb-5 text-left"
+                            [disabled]="addGameForm.invalid">
+                            Publish Match
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="add-success" *ngIf="success">
+        Yay! Match published successfully!
+    </div>
+</div>

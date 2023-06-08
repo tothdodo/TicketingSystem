@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TicketingSystemDB.Entities.Games.Game">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <AssociationLine Name="HomeTeam" Type="TicketingSystemDB.Entities.Teams.Team" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="2.163" />
+        <Point X="5.294" Y="2.163" />
+        <Point X="5.294" Y="5.316" />
+        <Point X="6.25" Y="5.316" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.01" Y="1.974" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AwayTeam" Type="TicketingSystemDB.Entities.Teams.Team" FixedFromPoint="true">
+      <Path>
+        <Point X="6.5" Y="2.632" />
+        <Point X="6.5" Y="4.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.047" Y="0.237" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAIAAAAAAIAAAAAAAAAAQAAAhIAA=</HashCode>
+      <FileName>Entities\Games\Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="HomeTeam" />
+      <Property Name="AwayTeam" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="GameSeats" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.Games.GameSeat">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Seat" Type="TicketingSystemDB.Entities.Games.Seat" FixedFromPoint="true">
+      <Path>
+        <Point X="3.5" Y="1.229" />
+        <Point X="2" Y="1.229" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAEAQAgAAAgAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Entities\Games\GameSeat.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Game" />
+      <Property Name="Seat" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.Games.Seat">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Row" Type="TicketingSystemDB.Entities.Games.Row">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.199" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="GameSeats" Type="TicketingSystemDB.Entities.Games.GameSeat" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="0.724" />
+        <Point X="3.5" Y="0.724" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAIBA=</HashCode>
+      <FileName>Entities\Games\Seat.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Row" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="GameSeats" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.Games.Row">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <AssociationLine Name="Sector" Type="TicketingSystemDB.Entities.Games.Sector">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.352" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Seats" Type="TicketingSystemDB.Entities.Games.Seat" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="3.375" />
+        <Point X="2.375" Y="3.375" />
+        <Point X="2.375" Y="2.188" />
+        <Point X="2" Y="2.188" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Entities\Games\Row.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Sector" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Seats" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.Games.Sector">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <AssociationLine Name="Rows" Type="TicketingSystemDB.Entities.Games.Row" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="6.312" />
+        <Point X="2.375" Y="6.312" />
+        <Point X="2.375" Y="4.75" />
+        <Point X="2" Y="4.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Games\Sector.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Rows" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.News.News">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAACAAAAEAAAAAAABAAAAAAAAQAABE=</HashCode>
+      <FileName>Entities\News\News.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.Players.Player">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAEAAAgAAAAAgAAAAAAQAAACAAAAAAAAAAAAACAg=</HashCode>
+      <FileName>Entities\Players\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TicketingSystemDB.Entities.Teams.Team">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <AssociationLine Name="HomeGames" Type="TicketingSystemDB.Entities.Games.Game" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.625" Y="4.25" />
+        <Point X="7.625" Y="3.875" />
+        <Point X="7.688" Y="3.875" />
+        <Point X="7.688" Y="2.632" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.081" Y="0.694" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AwayGames" Type="TicketingSystemDB.Entities.Games.Game" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="5.316" />
+        <Point X="9.351" Y="5.316" />
+        <Point X="9.351" Y="0.901" />
+        <Point X="7.75" Y="0.901" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.491" Y="-0.296" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgQAAAAAQAAAAQAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Entities\Teams\Team.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="HomeGames" />
+      <Property Name="AwayGames" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

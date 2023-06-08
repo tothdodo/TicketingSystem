@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TicketingSystemDB.Entities;
 using TicketingSystemDB.Entities.Games;
+using TicketingSystemDB.Entities.News;
 using TicketingSystemDB.Entities.Players;
+using TicketingSystemDB.Entities.Teams;
 using TicketingSystemDB.EntityConfigurations;
 
 namespace TicketingSystemDB
@@ -11,28 +12,31 @@ namespace TicketingSystemDB
         public TSDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Seat> Seats => Set<Seat>();
-        public DbSet<User> Users => Set<User>();
         public DbSet<Game> Games => Set<Game>();
         public DbSet<Sector> Sectors => Set<Sector>();
         public DbSet<Row> Rows => Set<Row>();
 
         public DbSet<GameSeat> GameSeats => Set<GameSeat>();
-        public DbSet<UserAddress> UserAddresses => Set<UserAddress>();
-        public DbSet<Address> Addresses => Set<Address>();
 
         public DbSet<Player> Players => Set<Player>();
 
+        public DbSet<News> News => Set<News>();
+
+        public DbSet<Team> Teams => Set<Team>();
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.ApplyConfiguration(new NewsEntityConfiguration());
+
+            modelBuilder.ApplyConfiguration(new TeamEntityConfiguration());
 
             modelBuilder.ApplyConfiguration(new SectorEntityConfiguration());
             modelBuilder.ApplyConfiguration(new RowEntityConfiguration());
             modelBuilder.ApplyConfiguration(new SeatEntityConfiguration());
 
             modelBuilder.ApplyConfiguration(new GameEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new AddressEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new UserAddressEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
             modelBuilder.ApplyConfiguration(new GameSeatEntityConfiguration());
 
             modelBuilder.ApplyConfiguration(new PlayerEntityConfiguration());

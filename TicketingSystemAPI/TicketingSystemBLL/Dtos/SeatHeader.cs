@@ -18,7 +18,7 @@ namespace TicketingSystemBLL.Dtos
 
         public string SectorName { get; set; } = null!;
 
-        public string Status { get; set; }
+        public string Status { get; set; } = null!;
 
         public virtual List<GameSeatHeader> GameSeats { get; set; }
 

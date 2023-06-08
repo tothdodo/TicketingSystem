@@ -6,11 +6,11 @@
                 <div class="card-body">
                   <h5 class="card-title text-center fw-bolder">{{player.firstName}} {{player.lastName}} ({{getUppercaseSubstring(player.nationality!)}})</h5>
                   <p class="card-text fw-bold">
-                    Jersey number: {{player.jerseyNumber}}<br>
-                    Age: {{calculateAge(player.birthDate!)}} <br>
-                    Position: {{player.position}}<br>
-                    Heigth: {{player.heigth}} cm <br>
-                    Weigth: {{player.weigth}} kg</p>
+                        Jersey number: {{player.jerseyNumber}}<br>
+                        Age: {{calculateAge(player.birthDate!)}} <br>
+                        Position: {{player.position}}<br>
+                        Heigth: {{player.heigth}} cm <br>
+                        Weigth: {{player.weigth}} kg</p>
                     <div class="d-flex justify-content-end">
                         <button class="btn btn-danger" (click)="deletePlayer(player)">Delete</button>
                     </div>

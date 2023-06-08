@@ -1,7 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GameSeatHeader } from 'src/app/api/models';
-import { StrictHttpResponse } from 'src/app/api/strict-http-response';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-game-seats',

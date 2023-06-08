@@ -6,9 +6,10 @@ using TicketingSystemDB;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<PlayerService, PlayerService>();
-builder.Services.AddScoped<GameService, GameService>();
-builder.Services.AddScoped<SectorService, SectorService>();
-builder.Services.AddScoped<SeatService, SeatService >();
+builder.Services.AddTransient<GameService, GameService>();
+builder.Services.AddTransient<SeatService, SeatService >();
+builder.Services.AddScoped<NewsService, NewsService>();
+builder.Services.AddTransient<TeamService, TeamService>();
 
 // Add services to the container.
 builder.Services.AddSignalR();

@@ -27,9 +27,16 @@
                     <a class="nav-link"
                     routerLink="/team">Team</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link me-3 me-lg-0" id="settings"
-                    routerLink="/settings">Settings</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Settings
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" routerLink="/settings/add-news">Add News</a></li>
+                        <li><a class="dropdown-item" routerLink="/settings/add-player">Add Player</a></li>
+                        <li><a class="dropdown-item" routerLink="/settings/add-game">Add Game</a></li>
+                        <li><a class="dropdown-item" routerLink="/settings/manage-teams">Manage Teams</a></li>
+                      </ul>
                 </li>
             </ul>
             <ul class="navbar-nav d-flex flex-row">

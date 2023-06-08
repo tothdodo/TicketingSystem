@@ -1,0 +1,15 @@
+<div *ngIf="news">
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1 class="mb-3 mt-3 fw-bold">{{ news.mainTitle }}</h1>
+            <img class="img-fluid mb-3" style="height: 400px; width: 600px;" [src]="getImageSource(news)" alt="{{news.mainTitle}}"/>
+            <h2 style="white-space: pre-line">{{ news.detailsTitle }}</h2>
+            <p style="white-space: pre-line">
+                {{ news.content }}
+            </p>
+            <p class="text-muted">{{ formatDate(news.publishDate!) }}</p>
+          </div>
+        </div>
+    </div>
+</div>

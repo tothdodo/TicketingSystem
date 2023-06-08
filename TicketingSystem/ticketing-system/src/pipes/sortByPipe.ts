@@ -1,5 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * Sorts the array by the given field 
+ */
+
 @Pipe({name: 'sortBy'})
 export class SortByPipe implements PipeTransform {
   transform(array: Array<any>, field: string): Array<any> {

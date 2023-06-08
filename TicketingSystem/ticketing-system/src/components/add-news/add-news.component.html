@@ -1,0 +1,91 @@
+<div class="container mt-3">
+    <h1>Add the latest news!</h1>
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="addNewsForm" [hidden]="success" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <h4 class="mb-0">Main Title</h4>
+
+                    <mat-form-field class="w-100">
+                        <input matInput formControlName="mainTitle" placeholder="Enter Main Title"
+                            autocomplete="chrome-off" />
+
+                        <mat-error *ngIf="mainTitle!.invalid && mainTitle!.touched">
+                            Main Title is required!
+                        </mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <h4 class="mb-0">Subtitle (shown only in Home Page)</h4>
+
+                    <mat-form-field class="w-100">
+                        <input matInput formControlName="subTitle" placeholder="Enter Subtitle"
+                            autocomplete="chrome-off" />
+
+                        <mat-error *ngIf="subTitle!.invalid && subTitle!.touched">
+                            Subtitle is required!
+                        </mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <h4 class="mb-0">Details Title (shown only when the news is clicked)</h4>
+
+                    <mat-form-field class="w-100">
+                        <textarea rows="4" matInput formControlName="detailsTitle" placeholder="Enter Details Title"
+                            autocomplete="chrome-off"></textarea>
+
+                        <mat-error *ngIf="detailsTitle!.invalid && detailsTitle!.touched">
+                            Details Title is required!
+                        </mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <h4 class="mb-0">Content (shown only when the news is clicked)</h4>
+
+                    <mat-form-field class="w-100">
+                        <textarea rows="10" matInput formControlName="content" placeholder="Enter Content"
+                            autocomplete="chrome-off"></textarea>
+
+                        <mat-error *ngIf="content!.invalid && content!.touched">
+                            Content is required!
+                        </mat-error>
+
+                    </mat-form-field>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h4 class="mb-0">Publish Date: <br>
+                            Time of the publish</h4>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <h4 class="mb-0">Picture</h4>
+
+                            <div class="image-select">
+                                <input type="file" (change)="showPreview($event)" />
+
+                                <div class="imagePreview mt-1" *ngIf="pictureSrc && pictureSrc !== ''">
+                                    <img [src]="pictureSrc" style="height: 100px; width: 150px"
+                                        [alt]="addNewsForm.value.name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary" [disabled]="addNewsForm.invalid">Publish
+                            News</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="add-success" *ngIf="success">
+        Yay! Player added successfully!
+    </div>
+</div>

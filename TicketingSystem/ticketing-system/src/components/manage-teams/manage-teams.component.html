@@ -1,0 +1,16 @@
+<div class="container m-4">
+    <h1 class="mb-3">Manage the teams of the league</h1>
+    <button type="button" class="btn btn-primary mb-3" (click)="openAddTeamDialog()">Add new team</button>
+    <div class="row mb-2" *ngFor="let team of teams">
+        <div class="col d-flex">
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-danger me-2" (click)="deleteTeam(team.id!)">Delete</button>
+            <div>
+                <img src="assets/{{team.logoUrl}}" style="width: 100px; height: 100px;" alt="team logo" class="img-thumbnail">
+            </div>
+            <div class="d-flex align-items-center ms-2">
+                {{ team.name }}
+            </div>
+        </div>
+    </div>
+</div>

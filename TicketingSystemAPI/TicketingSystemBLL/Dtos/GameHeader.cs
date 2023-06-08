@@ -6,10 +6,11 @@ namespace TicketingSystemBLL.Dtos
     {
         public int Id { get; set; }
 
-        public string Opponent { get; set; } = null!;
+        public string HomeTeam { get; set; } = null!;
+        public string AwayTeam { get; set; } = null!;
+        public string HomeTeamLogoUrl { get; set; } = null!;
+        public string AwayTeamLogoUrl { get; set; } = null!;
         public DateTime StartTime { get; set; }
         public string Place { get; set; } = null!;
-        public DateTime BuyStarts { get; set; }
-        public DateTime BuyEnds { get; set; }
     }
 }

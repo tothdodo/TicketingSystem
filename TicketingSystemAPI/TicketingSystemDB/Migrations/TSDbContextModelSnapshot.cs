@@ -22,57 +22,6 @@ namespace TicketingSystemDB.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Address", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Zip")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Addresses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Szombathely",
-                            Street = "Kossuth Lajos utca 23.",
-                            Zip = "9700"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Budapest",
-                            Street = "Erzsébet utca 17/B",
-                            Zip = "1014"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Veszprém",
-                            Street = "Tölgyfa utca 3.",
-                            Zip = "8200"
-                        });
-                });
-
             modelBuilder.Entity("TicketingSystemDB.Entities.Games.Game", b =>
                 {
                     b.Property<int>("Id")
@@ -81,26 +30,20 @@ namespace TicketingSystemDB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("BuyEnds")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("AwayTeamId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("BuyStarts")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Opponent")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Place")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("HomeTeamId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AwayTeamId");
+
+                    b.HasIndex("HomeTeamId");
 
                     b.ToTable("Games");
 
@@ -108,28 +51,22 @@ namespace TicketingSystemDB.Migrations
                         new
                         {
                             Id = 1,
-                            BuyEnds = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            BuyStarts = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            Opponent = "DEAC",
-                            Place = "Arena Savaria",
+                            AwayTeamId = 2,
+                            HomeTeamId = 1,
                             StartTime = new DateTime(2023, 5, 6, 18, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            BuyEnds = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            BuyStarts = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            Opponent = "Alba Fehérvár",
-                            Place = "Arena Savaria",
+                            AwayTeamId = 3,
+                            HomeTeamId = 4,
                             StartTime = new DateTime(2023, 5, 13, 18, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            BuyEnds = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            BuyStarts = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            Opponent = "Szolnoki Olajbányász",
-                            Place = "Arena Savaria",
+                            AwayTeamId = 1,
+                            HomeTeamId = 2,
                             StartTime = new DateTime(2023, 5, 20, 18, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -153,8 +90,6 @@ namespace TicketingSystemDB.Migrations
                     b.HasKey("SeatId", "GameId");
 
                     b.HasIndex("GameId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("GameSeats");
 
@@ -14263,7 +14198,7 @@ namespace TicketingSystemDB.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Games.User", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.News.News", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -14271,38 +14206,99 @@ namespace TicketingSystemDB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("DetailsTitle")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MainTitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasMaxLength(20)
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SubTitle")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("UrlId")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("News");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Email = "biggestfan@gmail.com",
-                            Username = "BiggestFan"
+                            Content = "A fináléra képletesen szólva „felbillent” a Tüskecsarnok, hiszen a döntő résztvevőinek szurkolói a létesítmény egyik felében, egymással szemben kaptak elhelyezést, a másik oldalon a bronzmeccsben érintett Szolnok és Kecskemét szimpatizánsainak zöme nem maradt az aranycsatára.\r\n\r\nSoproni oldalon megsokszorozódtak a drukkerek, érthető, a KC kilenc éve járt legutóbb ilyen közel az aranyhoz, akkor Pécsen szoros meccsen (70–68) kikapott az idei bronzérmes Szolnoktól. A Falco két éve hat sikertelen döntő után megszerezte a klub első MK-győzelmét Budapesten, a Ludovika Arénában, ám tavaly óriási meglepetésre már a negyeddöntőben kiesett, miután kikapott a végül ezüstérmes Szegedtől.\r\n\r\nA találkozó esélyese egyértelműen a szombathelyi együttes volt, amely a bajnokság alapszakaszában oda-vissza megverte a Sopront, s amely kevésbé küzdelmes és fárasztó meccset követően jutott a vasárnapi döntőbe. A bemelegítés alatti hangpárbajt egyértelműen a kék-fehér drukkerek nyerték meg, de amikor feldobták a labdát, a sárga-fekete B-közép is kiengedte a hangját.\r\n\r\ndegesen kezdtek a játékosok, kivéve Kovács Benedeket, a Falco fiatal magyar bedobóját, aki két egymást követő hibátlan hárompontossal nyitott, majd Perl Zoltán duplájával már 14–5-re vezettek a szombathelyiek, így Kosztasz Flevarakisznak, a Sopron görög edzőjének alig öt perc után időt kellett kérnie. Hiába, két perc múlva már 14 ponttal állt jobban a vasi gárda, s 28–15-re hozta az első tíz percet. Önbizalom nélkül és pontatlanul játszott az SKC, s elvétve tudta csak kivédekezni a szombathelyiek támadásait, akik kívül-belül domináltak, és a félidőre 18 pontos vezetésre tettek szert.\r\n\r\nHa nem kupadöntőről lett volna szó, akkor az eredmény és a látottak alapján már lefutottnak is tekinthettük volna a meccset, annyira egyértelmű volt a hárompontosokat 54, a ketteseket 55 százalékkal értékesítő Falco fölénye.\r\n\r\nA fordulás után sem jött a fordulat, a sárga-feketék kézben tartották a mérkőzést – s ugyan becsülettel küzdött a Sopron, nem volt benne a játékában, hogy akár csak megszorítsa a vasiakat, akik a 26. percben már 25 pontos előnyben voltak, a vége pedig totális kiütés lett. 92–48",
+                            DetailsTitle = "A Falco korán tetemes előnyt szerzett, és 92–48-ra legyőzte a Sopront a férfi kosárlabda Magyar Kupa vasárnap esti budapesti döntőjében. A szombathelyi csapat rendkívül domináns játékkal, demoralizáló fölénnyel szerezte meg a klub történetének második Magyar Kupa-elsőségét.",
+                            Image = "kupagyozelem",
+                            MainTitle = "We won our second Hungarian Cup!",
+                            PublishDate = new DateTime(2023, 4, 9, 18, 25, 0, 0, DateTimeKind.Unspecified),
+                            SubTitle = "Strength demonstration in the final against Sopron KC! Our boys won 92-48!",
+                            UrlId = "we-won-our-second-hungarian-cup-2023-04-09"
                         },
                         new
                         {
                             Id = 2,
-                            Email = "jwman@gmail.com",
-                            Username = "JustWatchingMan"
+                            Content = "A holnapi találkozó előtt összegyűjtöttünk néhány érdekességet.\r\n\r\nA @deackosar az alapszakaszt a nyolcadik helyen zárta, 14-12-es mérleggel.\r\n\r\n🆚Az alapszakasz egymás elleni mérkőzéseit 1-1-re zártuk, miután idegenben 69-71 arányban győzni tudtunk, majd hazai pályán 75-81 arányban vereséget szenvedtünk a debreceniektől.\r\n\r\n❌Negyedöntős ellenfelünk az alapszakasz mérkőzései alapján átlagban 79.1 pontot engedett ellenfeleinek, ez az ötödik legkevesebb a ligában.\r\n\r\n🔝Kulcsjátékosuk Michaelyn Scott, a DEAC előző, Kaposvár elleni mérkőzésén 22 játékperc alatt 19 dobott pontot, 2 lepattanót és 7 asszisztot jegyzett.\r\n\r\nHajrá Falco!",
+                            DetailsTitle = "Itt vannak az érdekességek.",
+                            Image = "deac_cur",
+                            MainTitle = "Curiousities about our next opponent: DEAC!",
+                            PublishDate = new DateTime(2023, 4, 10, 12, 22, 0, 0, DateTimeKind.Unspecified),
+                            SubTitle = "Before our next match, we have some interesing informations.",
+                            UrlId = "curiousities-about-our-next-opponent-deac-2023-04-10"
                         },
                         new
                         {
                             Id = 3,
-                            Email = "guyritchie@citromail.hu",
-                            Username = "Guy Ritchie"
+                            Content = "A negyeddöntős párharc első mérkőzésének elején nehezen lendültünk ritmusba, a vendégek pedig kinti dobásokkal érvényesültek. Persze így is megnyertük az első, majd az azt követő három játékrészt is. A hajrában csak a különbség volt kérdéses, Stefan Pot 20 ponttal volt a legeredményesebb játékosunk ezzel 1-0-ra vezetünk.\r\n\r\nAz 1. negyedet jobban kezdtük, a játékrész derekán 13-8-ra vezettünk. Aztán a debreceni tripla után Cowels adott mesteri asszisztot Kellernek, 15-11. Perl kiváló védekezése után a befejezés is remek volt, 19-13. Az első pillanattól kiváló hangulatot teremtettek szurkolóink, akik a 8. percben a vendégek 3 pontot érő távoli dobását, majd Barac vonalról szerzett pontját és a második hibás büntető után egy Tiby-kosarat láthattak, 22-16. Ezután Neuwirth dobott újabb debreceni triplát, az utolsó másodpercben pedig a kupadöntő MVP-je, Tiby dobott ,,egylábas” duplát, 24-19.\r\n\r\nA 2. negyed Drenovac hármasával startolt, majd Perl 2+1 pontja, aztán már a negyedik DEAC-tripla érkezett meg, 27-24. Drenovac a vonalról is hiba nélkül dobott, Scott pedig egy közelivel megszerezte a vezetést a vendégeknek, 27-28. Barac kosara után vettük vissza a minimális előnyt, ezt Keller a vonalról növelte, 31-28. Scott duplája után, a 14. percben Cowels dobta be első hármasunkat, Polyák is kintről reagált, 34-33. A játékrész derekán Scott a vonalról egalizált, majd a minimális vezetést is visszavette, 34-35. Pot a vonalról egyenlített, de csak egyet dobott be, az ellentámadás után pedig Neuwirth ugyanennyit, 35-36. Ezt követően Zozó mesteri akció végén szerzett 2 pontot, majd egy újabb támadásunk végén már távolról is betalált, 40-36. Mielőtt elléptünk volna, Mandic a 16. perc végén időt kért. Hiába, újabb labdaszerzésünk és támadásunk után, Zozó a vonalról is betalált, 42-36. A félidő hajrájában tovább gyakorolhatta a büntetők értékesítését Zozó, akinek nem is volt ezzel gondja, 46-37. Rengeteg szabálytalanságot fújtak be ezekben a percekben a játékvezetők, ezt kihasználva előbb Polyák szépített, majd Pot állította vissza a 9 pontos előnyt, 48-39. Keller újabb kosara után először vezettünk tíznél több egységgel, Mandic újra magához hívta fiait, 50-39. A félidő utolsó percében, Tóth Ádám vonalról szerzett pontjai után Konakov mester is megállíttatta az órát, 50-41. Jól tette, bejött a megbeszélt figura, Pot triplájának örülhettünk, 53-41.\r\n\r\nA 3. negyed elején elején még jobban elléptünk, előbb Tiby akadálytalanul szerezhetett 2 pontot, majd Cowels és Pot is betalált közelről, 59-41. Mandic alig 1 perc után újra időt kért. Ezután Tóth Á., majd Pot is közelről talált be, 61-43. Drenovac vette el a labdát irányító játékosunktól, Pottól, majd könnyű kosarat szerzett, ezt Govens-tripla követte, 61-48-nál már Konakov mester kért időt. Jókor, Keller és Pot révén 65-48-ra módosult az eredmény. A negyed közepén agresszív védekezésre váltottak a debreceniek, Zozót így sem tudták megállítani, és mivel Govensre reklamálás miatt technikait fújtak, Barac ezt kihasználta és már 21 ponttal mentünk. Drenovac pontjaival jöttek közelebb, de Barac gyorsan reagált, aztán Zozó sem tudott hibázni a vonalról, 73-54. Az utolsó percben, Brown, illetve Scott hármasa is célba ért, 76-57.\r\n\r\nA 4. negyedet Krivacevic közelijével kezdtük, majd Taylor zsákolt, 78-61. Pot palánkos duplája után Krivi a vonalról gyarapította a pontjait, 81-61. A játékrész derekán Scott kozmetikázott a hátrányon, 81-65. A 37. percben Brown ugrott egy hatalmasat a labdáért, majd fájdalmasan kapott a térdéhez. Több perces ápolás után a 7 pontos Brown sajnos nem folytathatta, bízunk benne, hogy nincs nagy baj. Ezt követően Kenéz szerezte meg első pontjait, Cowels reagált azonnal, 87-67. A dudaszó előtt 2 perccel mindkét csapat mestere a fiatalokat hozta pályára. Ezek nem a mi perceink voltak, de a vendégek sem jöttek közelebb, rendkívül pontszegény utolsó játékrészt követően 87-67 maradt az eredmény.\r\n\r\nFalco-Vulcano Energia KC Szombathely – DEAC 87-67 (24-19, 29-22, 23-17, 11-10)\r\nRájátszás, 1. forduló, 1. mérkőzés.\r\nSzombathely, Arena Savaria\r\nJátékvezetők: Praksch Péter Árpád, Söjtöry Tamás Ferenc, Kovács Nimród János (Téczely Tamás)\r\n\r\nFalco: Pot 20/6, Kovács 2, Brown 7/3, Tiby 10, Keller 9. Csere: Perl 19/3, Barac 10, Cowels 7/3, Krivacevic 3, Sövegjártó -, Takács Zs. -, Horváth -.\r\n\r\nDebrecen: Govens 6/6, Mócsán 4, Gáspár 2, Drenovac 18/6, Tóth Á. 7. Csere: Garamvölgyi -, Scott 13/3, Taylor 5, Polyák 6/3, Neuwirth. 4/3, Kenéz 2.\r\n\r\nSzép volt, fiúk, folytatás szombaton, de már Debrecenben!",
+                            DetailsTitle = "Végig vezetve sikerült diadalmaskodnunk a szurkoloink örömére.",
+                            Image = "falco_deac",
+                            MainTitle = "Confident win at the playoff start: Falco - DEAC 87-67!",
+                            PublishDate = new DateTime(2023, 4, 12, 20, 11, 0, 0, DateTimeKind.Unspecified),
+                            SubTitle = "Stefan Pot scored 20 points, we had the lead throughout the match!",
+                            UrlId = "confident-win-against-deac-2023-04-12"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Content = "Zach brown injury content...",
+                            DetailsTitle = "Ugyanakkor közel sem biztos, hogy Milos Konakov vezetőedző beveti a játékost.",
+                            Image = "injury-report",
+                            MainTitle = "Fortunately Zach Brown's injury isn't that serious!",
+                            PublishDate = new DateTime(2023, 4, 13, 9, 1, 0, 0, DateTimeKind.Unspecified),
+                            SubTitle = "Our beloved small-forward hopefully can play in the finals!",
+                            UrlId = "zach-brown-injury-2023-04-13"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Content = "Third match, current standing: Falco 2 - 0 ZTE",
+                            DetailsTitle = "Minden jegy elkelt.",
+                            Image = "falco-zte",
+                            MainTitle = "Falco - ZTE tomorrow!",
+                            PublishDate = new DateTime(2023, 5, 8, 10, 6, 0, 0, DateTimeKind.Unspecified),
+                            SubTitle = "We can advance to the finals.",
+                            UrlId = "falco-zte-tomorrow-2023-05-08"
                         });
                 });
 
@@ -14359,43 +14355,81 @@ namespace TicketingSystemDB.Migrations
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.UserAddress", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Teams.Team", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Type")
-                        .HasMaxLength(50)
-                        .HasColumnType("int");
+                    b.Property<string>("HomeCourt")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("UserId", "AddressId");
+                    b.Property<string>("LogoUrl")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasIndex("AddressId");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.ToTable("UserAddresses");
+                    b.HasKey("Id");
+
+                    b.ToTable("Teams");
 
                     b.HasData(
                         new
                         {
-                            UserId = 1,
-                            AddressId = 1,
-                            Type = 0
+                            Id = 1,
+                            HomeCourt = "Arena Savaria",
+                            LogoUrl = "falco-logo.png",
+                            Name = "Falco KC Szombathely"
                         },
                         new
                         {
-                            UserId = 2,
-                            AddressId = 2,
-                            Type = 1
+                            Id = 2,
+                            HomeCourt = "Gáz utcai Sportcsarnok",
+                            LogoUrl = "alba-logo.png",
+                            Name = "Alba Fehérvár"
                         },
                         new
                         {
-                            UserId = 3,
-                            AddressId = 3,
-                            Type = 0
+                            Id = 3,
+                            HomeCourt = "Tiszaligeti Sportcsarnok",
+                            LogoUrl = "szolnok-logo.png",
+                            Name = "Szolnoki Olajbányász"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            HomeCourt = "DEAC Arena",
+                            LogoUrl = "deac-logo.png",
+                            Name = "DEAC"
                         });
+                });
+
+            modelBuilder.Entity("TicketingSystemDB.Entities.Games.Game", b =>
+                {
+                    b.HasOne("TicketingSystemDB.Entities.Teams.Team", "AwayTeam")
+                        .WithMany("AwayGames")
+                        .HasForeignKey("AwayTeamId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("TicketingSystemDB.Entities.Teams.Team", "HomeTeam")
+                        .WithMany("HomeGames")
+                        .HasForeignKey("HomeTeamId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AwayTeam");
+
+                    b.Navigation("HomeTeam");
                 });
 
             modelBuilder.Entity("TicketingSystemDB.Entities.Games.GameSeat", b =>
@@ -14412,15 +14446,9 @@ namespace TicketingSystemDB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketingSystemDB.Entities.Games.User", "User")
-                        .WithMany("GameSeats")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Game");
 
                     b.Navigation("Seat");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TicketingSystemDB.Entities.Games.Row", b =>
@@ -14445,30 +14473,6 @@ namespace TicketingSystemDB.Migrations
                     b.Navigation("Row");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.UserAddress", b =>
-                {
-                    b.HasOne("TicketingSystemDB.Entities.Address", "Address")
-                        .WithMany("UserAddresses")
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TicketingSystemDB.Entities.Games.User", "User")
-                        .WithMany("UserAddresses")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("TicketingSystemDB.Entities.Address", b =>
-                {
-                    b.Navigation("UserAddresses");
-                });
-
             modelBuilder.Entity("TicketingSystemDB.Entities.Games.Game", b =>
                 {
                     b.Navigation("GameSeats");
@@ -14489,11 +14493,11 @@ namespace TicketingSystemDB.Migrations
                     b.Navigation("Rows");
                 });
 
-            modelBuilder.Entity("TicketingSystemDB.Entities.Games.User", b =>
+            modelBuilder.Entity("TicketingSystemDB.Entities.Teams.Team", b =>
                 {
-                    b.Navigation("GameSeats");
+                    b.Navigation("AwayGames");
 
-                    b.Navigation("UserAddresses");
+                    b.Navigation("HomeGames");
                 });
 #pragma warning restore 612, 618
         }
